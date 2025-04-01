@@ -32,7 +32,7 @@ router.get('/run', (req,res) => {
 function runMe(cmd,res){
 //    return spawn(cmd);
 
-    const cmdRunning = spawn(cmd, []);
+    const cmdRunning = execFile(cmd, []);
     cmdRunning.on('close', (code) => {
         res.send(`child process exited with code ${code}`);
     });
